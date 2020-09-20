@@ -6,6 +6,11 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+pandas = "*"
+tabulate = "*"
+sklearn = "*"
+matplotlib = "*"
+tensorflow = "*"
 
 [requires]
 python_version = "3.7"
