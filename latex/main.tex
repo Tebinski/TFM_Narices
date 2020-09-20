@@ -1,0 +1,143 @@
+\documentclass[12pt, a4paper, oneside]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+
+
+% listing for python
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{counttexruns}
+\usepackage{epigraph}
+%%%%%%%%% Preamble file %%%%%%%%%%%%%%
+\input{preamble}
+\include{include/newCommands}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+
+%%%%%%%%%%%%%% Glossary %%%%%%%%%%%%%%
+\usepackage{glossaries}
+\makeglossaries
+\include{glossary_acronyms/glossary} % Archivo con las entradas del glosario
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%% DOCUMENT DATA %%%%%%%%%%%%
+\newcommand{\project}{Title of the project}
+\newcommand{\projectshort}{Short Title}
+\newcommand{\authorname}{Daniel G.Teba}
+\newcommand{\tutoredby}{Miguel Angel Gomez Lopez}
+\newcommand{\company}{Universidad Europea Miguel de Cervantes}
+\newcommand{\doctype}{Draft} %or draft
+\newcommand{\revision}{\thecounttexruns}
+\newcommand{\printDate}{\dateFMT\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%% PDF METADATA %%%%%%%%%%%%%
+\hypersetup{pdftitle={\project},
+	pdfauthor={Daniel G.Teba},
+	pdfsubject={\project},
+	pdfkeywords={\company}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%% DRAFt TWATERMARK %%%%%%%%%%%
+\ifthenelse{\equal{\doctype}{Draft} \or \equal{\doctype}{draft}}
+{
+	\usepackage[angle=60,
+				color=black!40,
+				scale=5]{background}
+	\usepackage{graphicx}}{}
+	\backgroundsetup{contents={DRAFT \printDate}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%
+\begin{document}
+	%\renewcommand{\abstractname}{Abstract}
+	%\renewcommand{\appendixname}{Ap\'endices}
+	%\renewcommand{\bibname}{Bibliograf\'ia}
+	%\renewcommand{\chaptername}{Cap\'itulo]
+	\renewcommand{\contentsname}{Índice de contenidos}
+	\renewcommand{\figurename}{Figura}
+	\renewcommand{\listfigurename}{Índice de figuras}
+	\renewcommand{\listtablename}{Índice de tablas}
+	\renewcommand{\tablename}{Tabla}
+
+	\setcounter{counttexruns}{5}
+	\thispagestyle{empty}
+	\coverPage
+	\thispagestyle{empty}
+
+	\clearpage
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\clearpage
+
+	\include{chapters/studyObjectives}
+	\clearpage
+
+	\include{chapters/situationalAnalysis}
+	\clearpage
+
+	\include{chapters/dataGathering}
+	\clearpage
+
+	\include{chapters/eda}
+	\clearpage
+
+	\include{chapters/modelDesign}
+	\clearpage
+
+	\include{chapters/results}
+	\clearpage
+
+	\include{chapters/conclusions}
+
+	\appendix
+	\include{appendices/code}
+	\clearpage
+
+	\printglossaries
+	\renewcommand{\url}[1]{\href{#1}{link}}
+	% Uncomment the following line to print the entire bibliography
+	\nocite{*}
+	\bibliographystyle{apacite}
+	\bibliography{Bibliography/TFMbibliografia}
+	%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
