@@ -1,5 +1,8 @@
 .idea
 
+*.pb
+*.gz
+events.out*
 #Latex files
 *.aux
 *.glo
@@ -24,3 +27,5 @@
 *.mtc1
 *.out
 *.synctex.gz
+*.pdf
+*.ctr

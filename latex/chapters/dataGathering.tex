@@ -24,9 +24,8 @@ sea averiguar la concentración del mismo.
 
 \subsection{Procesado}
 
-La lectura de los archivos  \emph{.dat} se ha realizado utilizando Python.
-El código para esta tarea está en Listing \ref{foo}
-\lstinputlisting[label={foo},caption={A difficult example in C}, language={Python}]{../python/LoadUciData.py}
+La lectura de los archivos  \emph{.dat} se ha realizado utilizando
+el código adjunto en Apendices  \ref{LoadUciData}
 
 
 \subsection{Exploratory Data Analysis}
@@ -34,7 +33,7 @@ El código para esta tarea está en Listing \ref{foo}
 Los datos se nos presentan en 10 lotes, correspondientes a experimentos a lo largo de tres años, donde se ensayaron
 6 diferentes gases a diferentes concentraciones.
 
-\begin{table}[]
+\begin{table}[h!]
 \begin{tabular}{|l|l|}
 \hline
 Batch ID & Month IDs                   \\ \hline
@@ -49,9 +48,10 @@ Batch 8  & Months 22 and 23            \\
 Batch 9  & Months 24 and 30            \\
 Batch 10 & Month 36                    \\
 \end{tabular}
+    \caption{ Distribución de los lotes a lo largo del tiempo.}
 \end{table}
 
-Los gases que se estudarion son los siguientes:
+Los gases que se estudiaron son los siguientes:
 \begin{enumerate}
     \item Ethanol
     \item Ethylene
@@ -63,7 +63,7 @@ Los gases que se estudarion son los siguientes:
 
 Los lotes contienen una cantidad de muestras desigual, ni los 6 gases de estudio están presentes en todos los lotes.
 
-La siguiente tabla muestra el numero de ensayos para cada gas.
+La tabla \ref{Tab: Numero de Gases por cada Batch} muestra el numero de ensayos para cada gas.
 
 \begin{table}
     \centering
@@ -84,7 +84,7 @@ La siguiente tabla muestra el numero de ensayos para cada gas.
     \label{Tab: Numero de Gases por cada Batch}
 \end{table}
 
-En la Tabla\ref{Tab: Numero de Gases por cada Batch} podemos ver que el numero de muestras en cada lote
+En la Tabla\ref{Tab: Numero de Gases por cada Batch} podemos ver que el número de muestras en cada lote
 es desigual. En los lotes 3, 4 y 5 el gas 6 no está presente. A la hora de crear un dataset de entrenamiento,
 convendria generar un lote donde haya un numero equitativo de muestras de todos los gases,
 y si las mediciones no son distantes en el tiempo podremos ver el efecto de la deriva si el algorimo entrenado con
@@ -108,11 +108,12 @@ la Figura\ref{fig: gasCount} muestra el numero de mediciones totales sobre cada 
 \end{figure}
 
 Si observamos los rangos de concentración para cada gas, han sido también diferentes.
+
 \begin{table}
     \centering
     \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-         & GAS & ('min', 'CONCENTRATION') & ('max', 'CONCENTRATION') & ('mean', 'CONCENTRATION') & ('std', 'CONCENTRATION') \\ \hline
+         & GAS & Minimo & Máximo & Media & StdDesv \\ \hline
         1 & 2.5 & 600 & 114.95 & 86.64 &  \\ \hline
         2 & 2.5 & 300 & 116.1 & 79.89 &  \\ \hline
         3 & 2.5 & 1000 & 323.55 & 272.02 &  \\ \hline

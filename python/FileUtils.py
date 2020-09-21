@@ -1,5 +1,4 @@
 import os
-import matplotlib.pyplot as plt
 
 def get_list_of_files(folder):
     """Returns a list with the files contained in that folder"""

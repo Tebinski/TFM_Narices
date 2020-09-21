@@ -1,11 +1,15 @@
-\chapter{Código de la actividad}
-\begin{lstlisting}[language=TeX,basicstyle=\tiny]
-\begin{figure}[ht!]                                                   % Force here top
-    \centering                                                        % Centering the floating image
-                                                                      % within the box
-    \includegraphics[width=\columnwidth]{RELATIVE_PATH_TO_IMAGE}      % Include the image
-    \caption{CAPTION HERE}                                            % Caption of the floating image
-    \label{LABEL_TAG_HERE}                                            % For referencing the image
-\end{figure}
-\end{lstlisting}\label{ls: imageExample}
-\captionof{lstlisting}{Código de ejemplo de generación de imágen flotante}
+\chapter{Código utilizado}
+
+\section{Código Exploratory Data Analysis}
+
+\lstinputlisting[label={lst:Step0}, caption={Realiza el analisi exploratorio de los datos disponibles}, language={Python}]{../python/Step0_EDA.py}
+
+\section{Código Red neuronal secuencial}
+
+\lstinputlisting[label={lst:SeqNeuralNet}, caption={Red neuronal secuencial}, language={Python}]{../python/SeqModel.py}
+\lstinputlisting[label={lst:Step1}, caption={Red neuronal secuencial para clasificar gases}, language={Python}]{../python/Step1_NN.py}
+\lstinputlisting[label={lst:Step2}, caption={Red neuronal secuencial para estimar la concentración}, language={Python}]{../python/Step2_NN_Concentration.py}
+
+\section{Código Utilities}
+
+\lstinputlisting[label={lst:LoadUciData},caption={Clases para cargar datos en memoria}, language={Python}]{../python/LoadUciData.py}
