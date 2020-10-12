@@ -1,5 +1,4 @@
 .idea
-
 *.pb
 *.gz
 events.out*
@@ -27,5 +26,4 @@ events.out*
 *.mtc1
 *.out
 *.synctex.gz
-*.pdf
 *.ctr

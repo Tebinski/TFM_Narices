@@ -1,0 +1,35 @@
+Proyecto
+
+Dividir las señales de los 16 sensores, deberiamos detectar 2 o 3 tipos de sensores. XQ?? Donde lei yo esto? Las graficas confirman los 3 tipos de sensores. 
+Comparar si las señales entre sensores son muy diferentes 
+Podria ayudar a clasificar si dividimos las 16 señales? Creo que no 
+
+
+Matriz de errores de clasificacion, ver que si falla para todos los gases por igual 
+
+
+Que mas tengo pendiente? 
+Clasificacion LSTM parace que no es caso de aplicacion
+redaccion/ faltas de ortografia 
+
+
++ Leer paper sobre los diferentes tipos de sensores. A ver cual era
+
++ clasificacion se confunde porque los datos para x=0.1, 0.01 y 0.001 son muy similares. 
+	Tal vez se podria mirar los beneficios de utilizar solo uno de ellos. Pero no creo
+
++probar con keras clasifiers SVM
+
+-------
+
+07/10/2020
+
+Me he liado , arreglar el programa step1_evolution. 
+Ver si merece la pena entrenar 10 modelos para comprobar el drift. 
+
+
+
+Redactar: Because it is a multi-class classification problem, categorical_crossentropy is used as the loss function
+Probar clasificador SVM
+Probar clasificar con LSTM
+https://towardsdatascience.com/multi-class-text-classification-with-lstm-1590bee1bd17
