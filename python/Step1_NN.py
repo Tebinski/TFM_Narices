@@ -1,9 +1,13 @@
-from abc import ABC, abstractmethod
+"""
+Comprobarmos el rendimiento de las redes neuronales para realizar la tarea de clasificacion
+"""
+
+
 import numpy as np
 import pandas as pd
 
 import tensorflow as tf
-from sklearn.model_selection import train_test_split
+
 from sklearn.metrics import confusion_matrix
 
 import matplotlib.pyplot as plt
@@ -11,47 +15,7 @@ import seaborn as sns
 
 from python.LoadUciData import load_data
 from python.StandardFigure import save_figure
-from python.SeqModel import SeqModel
-
-
-class AbstractSequentialModel(ABC):
-
-    @abstractmethod
-    def split_data(self):
-        return self.X_train, self.X_test, self.y_train, self.y_test
-
-    def train_and_save_model(self, modelname):
-        seq = SeqModel()
-        seq.model_train(self.X_train, self.y_train)
-        seq.save_model(modelname)
-
-
-class SeqModelSimple(AbstractSequentialModel):
-
-    def __init__(self, df):
-        self.df = df
-
-    def split_data(self):
-        ## First, we will NOT use concentration data
-        gas_X = df_gas.drop(columns=['Batch ID', 'GAS', 'CONCENTRATION']).to_numpy()
-        gas_y = pd.get_dummies(df_gas['GAS'],drop_first=False)
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(gas_X, gas_y,
-                                                            test_size=0.33,
-                                                            random_state=42)
-        return self.X_train, self.X_test, self.y_train, self.y_test
-
-
-class SeqModelWithConcentration(AbstractSequentialModel):
-
-    def __init__(self, df):
-        self.df = df
-
-    def split_data(self):
-        ## First, we will NOT use concentration data
-        gas_X = df_gas.drop(columns=['Batch ID', 'GAS']).to_numpy()
-        gas_y = pd.get_dummies(df_gas['GAS'], drop_first=False)
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(gas_X, gas_y, test_size=0.33, random_state=42)
-        return self.X_train, self.X_test, self.y_train, self.y_test
+from python.SeqModel import SeqModel, SeqModelSimple, SeqModelWithConcentration
 
 
 def plot_conf(model, X_test, y_test):

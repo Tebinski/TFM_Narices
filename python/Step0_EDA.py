@@ -1,3 +1,12 @@
+"""
+Exploratory Data Analysis.
+Para explorar el dataset de gases, vamos a represntar
+    - Cuantos gases hay en cada batch
+    - calcular tabla conteo de:
+        - batch vs gases
+        - Cuantas muestras hay para cada gas.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 

@@ -1,10 +1,16 @@
+"""
+Vamos a demotrar que el drift efectivamente ocurre en las muestras de los sensores.
+
+Se demostrará de la siguiente forma:
+- Entrenar con los datos de un batch, testear con los datos de los batchs anteriores y posteriores.
+"""
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, plot_confusion_matrix
-
 
 from python.LoadUciData import load_data
 from python.StandardFigure import save_figure
@@ -44,6 +50,7 @@ def evo_train(df_gas, n_batch_training):
         X_train, X_test, y_train, y_test = ev.split_data()
         model_name = f'temp_training_{n_batch_training}_test{batch}'
         ev.train_and_save_model(model_name)
+
 
 def evolution_drift_with_seq(df_gas, n_batch_training):
     ## Check the drift importance. Use the first N batch to train, and check the

@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import re
-import pickle
 from python.FileUtils import get_list_of_files_with_extension
 
 
@@ -32,6 +31,7 @@ class LoadDatFile:
         df['Batch ID'] = self.batch_number
         return df
 
+
 class GasDataFrame:
     """ Process the .dat file to get all the information contained:
     - Gas, concentration and measures."""
@@ -51,6 +51,7 @@ class GasDataFrame:
         df['GAS'] = df['GAS'].astype('int')
         df['CONCENTRATION'] = df['CONCENTRATION'].astype('float')
         return df
+
 
 class LoadDatFolder:
     """
@@ -78,6 +79,7 @@ def load_data():
     df_gas = LoadDatFolder(folder).df
     return df_gas
 
+
 if __name__ == '__main__':
     file_data = r'data_uci/driftdataset/batch1.dat'
     lf = LoadDatFile(file_data)
@@ -89,3 +91,5 @@ if __name__ == '__main__':
     folder = r'data_uci/driftdataset/'
     ldf = LoadDatFolder(folder)
     my_dataframe_full = ldf.df
+
+

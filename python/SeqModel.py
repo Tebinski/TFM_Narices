@@ -3,6 +3,9 @@ from tensorflow import keras
 from tensorflow.python.keras.callbacks import TensorBoard
 from time import time
 import os
+import pandas as pd
+from abc import ABC, abstractmethod
+from sklearn.model_selection import train_test_split
 
 
 class SeqModel:
@@ -52,5 +55,46 @@ class SeqModel:
 
     def get_model(self):
         return self.model
+
+
+class AbstractSequentialModel(ABC):
+
+    @abstractmethod
+    def split_data(self):
+        return self.X_train, self.X_test, self.y_train, self.y_test
+
+    def train_and_save_model(self, modelname):
+        seq = SeqModel()
+        seq.model_train(self.X_train, self.y_train)
+        seq.save_model(modelname)
+
+
+class SeqModelSimple(AbstractSequentialModel):
+
+    def __init__(self, df):
+        self.df = df
+
+    def split_data(self):
+        ## First, we will NOT use concentration data
+        df_gas = self.df
+        gas_X = df_gas.drop(columns=['Batch ID', 'GAS', 'CONCENTRATION']).to_numpy()
+        gas_y = pd.get_dummies(df_gas['GAS'], drop_first=False)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(gas_X, gas_y, test_size=0.33, random_state=42)
+        return self.X_train, self.X_test, self.y_train, self.y_test
+
+
+class SeqModelWithConcentration(AbstractSequentialModel):
+
+    def __init__(self, df):
+        self.df = df
+
+    def split_data(self):
+        ## Use concentration data
+        df_gas = self.df
+        gas_X = df_gas.drop(columns=['Batch ID', 'GAS']).to_numpy()
+        gas_y = pd.get_dummies(df_gas['GAS'], drop_first=False)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(gas_X, gas_y, test_size=0.33, random_state=42)
+        return self.X_train, self.X_test, self.y_train, self.y_test
+
 
 

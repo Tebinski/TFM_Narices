@@ -12,6 +12,7 @@ sklearn = "*"
 matplotlib = "*"
 tensorflow = "*"
 seaborn = "*"
+heatmapz = "*"
 
 [requires]
 python_version = "3.7"

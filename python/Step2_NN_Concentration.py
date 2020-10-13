@@ -1,3 +1,9 @@
+"""
+Comprobarmos el rendimiento de las redes neuronales para realizar la tarea de clasificacion utilizando la informacion
+de la concentracion dentro del dataset.
+"""
+
+
 from sklearn.model_selection import train_test_split
 
 from python.LoadUciData import load_data
