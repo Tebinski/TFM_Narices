@@ -1,3 +1,14 @@
 \chapter{Conclusiones y planes de mejora}
 
-\lipsum[1-2]
+La deriva o drift en los sensores tiene un efecto muy negativo en la capacidad de predicción de los modelos de regresión, que no puede obviarse. En el dataset de estudio, \emph{UCI Gas Sensor Array Drift Dataset Data Set} hemos comprobado tanto con redes neuronales, randomForest o LightGBM que su precisión se ve drásticamente reducido debido al drift. 
+
+Los métodos de clasificación basados en redes neuronales son lentos en entrenar, y su accuracy se va reduciendo conforme nos alejamos de los datos de entrenamiento.
+
+Los métodos basados en RandomForest o LightGBM entrenan con mucha rapidez, pero no son inmunes al efecto del drift y el accuracy desciende con mediciones distantes entre sí. 
+Todos los métotodos anteriormente mencionados fallan en precision a causa del drift, no en accuracy, catalogando unos gases de forma errónea en la catergoría de otro gas. 
+
+Los métodos de aprendizaje no supervisado básicos que se han probado, KMeans y TSNE tienen un rendimiento mucho peor que las redes neuronales o los RF o LGBM. TSNE es muy costoso computacionalmente.
+
+Este trabajo ha puesto de manifiesto la complejidad del problema de clasificación. Es necesario un estudio de variables, que no se ha realizado en este trabajo, para poder generar un modelo únicamente con variables independientes no correlacionadas entre sí. Se ha analizado que los sensores son diferentes entre sí, y que dentro del mismo tipo tienen calibraciones diferentes que los hacen insensibles a ciertos gases.  
+
+ En \cite{Zhao2019} han propuesto un modelo ensemble basado en SVM y LSTM para reducir el efecto del drift en la pérdida de precisión. En un próximo trabajo con más tiempo nos gustaría tratar de reproducir sus resultados. 

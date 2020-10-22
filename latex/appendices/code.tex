@@ -1,15 +1,27 @@
 \chapter{Código utilizado}
 
 \section{Código Exploratory Data Analysis}
-
 \lstinputlisting[label={lst:Step0}, caption={Realiza el analisi exploratorio de los datos disponibles}, language={Python}]{../python/Step0_EDA.py}
 
 \section{Código Red neuronal secuencial}
-
 \lstinputlisting[label={lst:SeqNeuralNet}, caption={Red neuronal secuencial}, language={Python}]{../python/SeqModel.py}
+
 \lstinputlisting[label={lst:Step1}, caption={Red neuronal secuencial para clasificar gases}, language={Python}]{../python/Step1_NN.py}
-\lstinputlisting[label={lst:Step2}, caption={Red neuronal secuencial para estimar la concentración}, language={Python}]{../python/Step2_NN_Concentration.py}
+
+\section{Código LGBM}
+\lstinputlisting[label={lst:Step4}, caption={Red neuronal secuencial para clasificar gases}, language={Python}]{../python/Step4_LightGBM.py}
+
+\section{Codigo Randonforest}
+\lstinputlisting[label={lst:RF},caption={Clases para cargar datos en memoria}, language={Python}]{../python/RandomForestClasification.py}
+\lstinputlisting[label={lst:RFmain},caption={Clases para cargar datos en memoria}, language={Python}]{../python/Step2_RF_for_all_sensors.py}
+
+\section{Código aprendizaje no supervisado} 
+\lstinputlisting[label={lst:Cluster},caption={Clases para cargar datos en memoria}, language={Python}]{../python/Step0_3_ClusteringSignals.py}
 
 \section{Código Utilities}
-
 \lstinputlisting[label={lst:LoadUciData},caption={Clases para cargar datos en memoria}, language={Python}]{../python/LoadUciData.py}
+
+\lstinputlisting[label={lst:LoadSensorData},caption={Clases para cargar datos en memoria}, language={Python}]{../python/LoadSensorData.py}
+
+\lstinputlisting[label={lst:FileUtils},caption={Clases para cargar datos en memoria}, language={Python}]{../python/FileUtils.py}
+

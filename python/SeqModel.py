@@ -44,7 +44,7 @@ class SeqModel:
         self.y_size = y_train.shape[1]
         model = self._gen_and_complile_model()
         tb = TensorBoard(log_dir="logs/{}".format(time()))
-        model.fit(X_train, y_train, epochs=30, callbacks=[tb])
+        model.fit(X_train, y_train, epochs=50, callbacks=[tb])
         self.model = model
 
     def model_evaluate(self, X_test, y_test):
@@ -97,4 +97,12 @@ class SeqModelWithConcentration(AbstractSequentialModel):
         return self.X_train, self.X_test, self.y_train, self.y_test
 
 
+if __name__ == '__main__':
+    model = keras.Sequential([
+        keras.layers.Flatten(input_shape=(128, 1)),
+        keras.layers.Dense(32, activation='relu'),
+        keras.layers.Dense(32, activation='relu'),
+        keras.layers.Dense(6)
+    ])
 
+    model.summary()

@@ -1,8 +1,9 @@
 import os
 import pandas as pd
 import re
+import numpy as np
 from python.FileUtils import get_list_of_files_with_extension
-
+from sklearn.preprocessing import StandardScaler
 
 class LoadDatFile:
     """
@@ -77,7 +78,46 @@ class LoadDatFolder:
 def load_data():
     folder = r'data_uci/driftdataset'
     df_gas = LoadDatFolder(folder).df
+
+    #Rename sensor columns
+    col_names_dict = {}
+    i = 1
+    for sensor in range(0, 15 + 1):
+        for feature in range(0, 7 + 1):
+            col_names_dict[i] = f'S{sensor}_{feature}'
+            i = i + 1
+
+    df_gas = df_gas.rename(columns=col_names_dict)
     return df_gas
+
+
+def load_data_scaled():
+    # Load data
+    df = load_data()
+
+    # init scaler
+    sc = StandardScaler()
+
+    # Scale only sensor data
+    sensor_features = df.iloc[:, :128]
+    sc.fit(sensor_features)
+    data_sc = sc.transform(sensor_features)
+
+    # Get the unscaled info
+    info = df[['Batch ID', 'GAS', 'CONCENTRATION']].values
+
+    # Merge scaled data and the info into a pandas dataframe.
+    data = np.concatenate([data_sc, info], axis=1)
+    df_sca_gas = pd.DataFrame(data, columns=df.columns)
+    for col in ['GAS', 'Batch ID']:
+        df_sca_gas[col] = df_sca_gas[col].astype('int').astype('category')
+    return df_sca_gas
+
+def calculate_bins_concentration(df):
+    # Create ConcentrationCat column.
+    df['ConcentrationCat'] = pd.cut(df['CONCENTRATION'], bins=range(0, 1000, 100))
+    return df
+
 
 
 if __name__ == '__main__':
@@ -91,5 +131,8 @@ if __name__ == '__main__':
     folder = r'data_uci/driftdataset/'
     ldf = LoadDatFolder(folder)
     my_dataframe_full = ldf.df
+
+    my_df_scaled = load_data_scaled()
+
 
 

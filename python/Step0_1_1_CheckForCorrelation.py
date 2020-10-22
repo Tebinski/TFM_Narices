@@ -15,8 +15,7 @@ from sklearn.preprocessing import StandardScaler
 
 from python.LoadUciData import load_data
 from python.StandardFigure import save_figure
-from python.LoadSensorData import get_sensors
-
+from python.LoadSensorData import get_sensors_list
 
 if __name__ == '__main__':
 
@@ -33,7 +32,7 @@ if __name__ == '__main__':
     save_figure(fig, 'Step0_1_1_CorrelationBetweenFeatures')
 
     # Obtenemos un dataframe con solo un sensor de Tipo I, II, III y IV
-    df_sens = get_sensors([0, 2, 4, 6])
+    df_sens = get_sensors_list([0, 2, 4, 6])
     sensors_features = df_sens.drop(['Batch ID', 'GAS','CONCENTRATION'],axis=1)
     fig = plt.figure(figsize=(20, 20));
     ax = sns.heatmap(sensors_features.corr(),
@@ -43,7 +42,7 @@ if __name__ == '__main__':
     save_figure(fig, 'Step0_1_1_CorrelationBetweenFeatures_Data1')
 
     # Otra combinacion de 4 sensores
-    df_sens = get_sensors([1, 3, 5, 7])
+    df_sens = get_sensors_list([1, 3, 5, 7])
     sensors_features = df_sens.drop(['Batch ID', 'GAS', 'CONCENTRATION'], axis=1)
     fig = plt.figure(figsize=(20, 20));
     ax = sns.heatmap(sensors_features.corr(),
@@ -53,7 +52,7 @@ if __name__ == '__main__':
     save_figure(fig, 'Step0_1_1_CorrelationBetweenFeatures_Data2')
 
     # Y otra
-    df_sens = get_sensors([8, 10, 12, 14])
+    df_sens = get_sensors_list([8, 10, 12, 14])
     sensors_features = df_sens.drop(['Batch ID', 'GAS', 'CONCENTRATION'], axis=1)
     fig = plt.figure(figsize=(20, 20));
     ax = sns.heatmap(sensors_features.corr(),
@@ -63,7 +62,7 @@ if __name__ == '__main__':
     save_figure(fig, 'Step0_1_1_CorrelationBetweenFeatures_Data3')
 
     # Y otra
-    df_sens = get_sensors([9, 11, 13, 15])
+    df_sens = get_sensors_list([9, 11, 13, 15])
     sensors_features = df_sens.drop(['Batch ID', 'GAS', 'CONCENTRATION'], axis=1)
     fig = plt.figure(figsize=(20, 20));
     ax = sns.heatmap(sensors_features.corr(),

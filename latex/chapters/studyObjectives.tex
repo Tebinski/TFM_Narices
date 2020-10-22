@@ -1,33 +1,24 @@
 \chapter{Objetivos del trabajo}
 
-Dados unos datos experimentales provenientes de una nariz electrónica,
-\textbf{insertar aquí enlace UCI data} se desea hacer un estudio de la viabilidad de
-clasificar correctamente de qué gas se trata,
-e intentar dar una estimación de la concentración de dicho gas.
+El fenómeno \emph{drift} o en español deriva es un problema importante que impide el uso fiable de sensores de gas,
+ya que con el tiempo se suceden diferentes efectos que alteran la respuesta del sensor ante el mismo estímulo.
 
-Los datos provienen de cada medición de un gas con 16 sensores.
-De esta forma, cada medición genera 16 series temporales, de las cuales de cada una se
-han extraido 8 \emph{features}. Esto hace un total de 128 componentes para cada medición.
+Para estudiar este problema existe en \emph{UCI Data Repository} un dataset, llamado \emph{Gas Sensor Array Drift Dataset Data Set},
+que puede ser descargado desde \emph{https://archive.ics.uci.edu/ml//datasets/Gas+Sensor+Array+Drift+Dataset}.
+
+Este trabajo va a ilustrar la complejidad de los datos de este dasatet, compuesto por las mediciones de 16 sensores,
+detectando 6 tipos de gases a lo largo de 36 meses.
+Cada medición de un gas genera 16 series temporales,
+de las cuales de cada una se han extraido 8 \emph{features}.
+Esto hace un total de 128 componentes para cada medición.
 Para cada medición es conocido el gas que se ha ensayado y su nivel de concentración.
 
-Con este tipo de información, se va a estudiar los resultados que pueden ofrecer las redes neuronales
-para resolver este problema.
+En este trabajo se centrará en la tarea de clasificación de cada tipo de gas, dejando de lado la tarea de predecir dadas las 128 componentes el gas y su concentración. 
 
-En el caso que nos ocupa, los sensores derivan a
-lo largo del tiempo, lo cual implica que para el mismo gas, con la misma concentración, las series temporales obtenidas
-en un mes dado podrían ser diferentes a las realizadas con las mismas condiciones meses después.
+Con este tipo de información, se va a estudiar los resultados que pueden ofrecer las redes neuronales para resolver este problema.
 
-En este trabajo se tomará como primera aproximación dividir la tarea de clasificación y la tarea de estimación.
-
-Para la tarea de clasificación, se probarán las siguientes configuraciones, de más simple a más compleja:
-
-\begin{itemize}
-    \item Perceptron
-    \item \textbf{Long short-term memory \glossary{LSTM} Neural net}
-\end{itemize}
-
-Una vez conseguida la tarea de clasificación, se usará otra red neuronal para determinar, si es posible,
-la concentración del gas.
+Se planteará un algoritmo de clasificación no supervisada, para después demostrar que el fenómeno de deriva de los sensores tiene un gran importancia en la precisión del modelo.
 
 En este trabajo se utilizará Keras y TensorFlow para el diseño de las redes neuronales, en el entorno Python.
+Para los algoritmos no supervisados se ha elegido de la libreria SciKit el cluster KMeans. Para modelos ML supervisados se va a analizar las bondades de RandomForest y LigthGBM.
 

@@ -13,6 +13,9 @@ matplotlib = "*"
 tensorflow = "*"
 seaborn = "*"
 heatmapz = "*"
+eli5 = "*"
+shap = "*"
+lightgbm = "*"
 
 [requires]
 python_version = "3.7"

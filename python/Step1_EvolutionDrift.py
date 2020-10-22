@@ -86,6 +86,7 @@ def evolution_drift_with_seq(df_gas, n_batch_training):
 if __name__ == '__main__':
     # Check drift relevance  with different training sets.
     df_gas = load_data()
+
     for col in ['GAS', 'Batch ID']:
         df_gas[col] = df_gas[col].astype('category')
 

@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 
 % listing for python
@@ -54,12 +54,12 @@
 %
 %
 %%%%%%%%%%% DOCUMENT DATA %%%%%%%%%%%%
-\newcommand{\project}{Title of the project}
+\newcommand{\project}{Estudio del efecto de la deriva de sensores para gases en modelos de ML}
 \newcommand{\projectshort}{Short Title}
 \newcommand{\authorname}{Daniel García Teba}
-\newcommand{\tutoredby}{Miguel Angel Gomez Lopez}
+\newcommand{\tutoredby}{Miguel Ángel Gómez López}
 \newcommand{\company}{Universidad Europea Miguel de Cervantes}
-\newcommand{\doctype}{Draft} %or draft
+\newcommand{\doctype}{draft} %or draft
 \newcommand{\revision}{\thecounttexruns}
 \newcommand{\printDate}{\dateFMT\today}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,7 +81,8 @@
 				color=black!40,
 				scale=5]{background}
 	\usepackage{graphicx}}{}
-	\backgroundsetup{contents={DRAFT \printDate}}
+	\backgroundsetup{contents={}}
+	%\backgroundsetup{contents={DRAFT \printDate}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
@@ -126,8 +127,6 @@
 	\include{chapters/results}
 	\clearpage
 
-	\include{chapters/conclusions}
-
 	\appendix
 	\include{appendices/code}
 	\clearpage
@@ -137,7 +136,7 @@
 	% Uncomment the following line to print the entire bibliography
 	\nocite{*}
 	\bibliographystyle{apacite}
-	\bibliography{Bibliography/TFMbibliografia}
+	\bibliography{Bibliography/mubib}
 	%
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
