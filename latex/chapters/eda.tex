@@ -127,9 +127,9 @@ Si utilizamos RandomForest o LightGBM, podemos representar los shap values, y ve
 
 Para este apartado se ha elegido dos algoritmos de clasificación no supervisada, KMeans clustering y TSNE. 
 
-Para el algotirmo de KMeans clustering se ha realizado la Figura \ref{fig:step03color-for-each-cluster}. En la imagen drcha se puede apreciar cómo hay mediciones que están bien difenciadas del resto, mientras que hay un gran conjunto de ellas que el algoritmo no ha podido separarlas, ya que se trata de mediciones muy similares, pero sin embargo e trata de gases distintos. 
+Para el algotirmo de KMeans clustering se ha realizado la Figura \ref{fig:step03color-for-each-cluster}. En la imagen derecha se puede apreciar cómo hay mediciones que están bien diferenciadas del resto, mientras que hay un gran conjunto de ellas que el algoritmo no ha podido separarlas, ya que se trata de mediciones muy similares, pero sin embargo e trata de gases distintos. 
 	
-Esto pone de manifiesto la complejidad del problema, ya que si las señales para cada gas fueran suficientemente diferentes entre sí, el algoritmo de clustering no habria encontrado problema en diferenciarlas. 
+Esto pone de manifiesto la complejidad del problema, ya que si las señales para cada gas fueran suficientemente diferentes entre sí, el algoritmo de clustering no habría encontrado problema en diferenciarlas. 
 
 \begin{figure}[h!]
 	\centering
@@ -140,7 +140,7 @@ Esto pone de manifiesto la complejidad del problema, ya que si las señales para
 \end{figure}
 
 
-Otro algoritmo de clasificación no supervisada, TSNE \emph{t-distributed stochastic neighbor embedding}, nos ha dado como resultado la Figura \ref{fig:step03tsnecolor-for-each-gas}, donde se ha coloreado cada punto en función del gas al que pertenece. Esta imagen pone de manifiesta cómo hay mediciones que a pesar de pertenecer a otros gases, son tan similares a otras que acaban en un clúster que no les correponde. 
+El algoritmo de clasificación no supervisada TSNE \emph{t-distributed stochastic neighbor embedding}, nos ha dado como resultado la Figura \ref{fig:step03tsnecolor-for-each-gas}, donde se ha coloreado cada punto en función del gas al que pertenece. Esta imagen pone de manifiesto cómo hay mediciones que a pesar de pertenecer a otros gases, son tan similares a otras que acaban en un clúster que no les correponde. 
 
 \begin{figure}[h!]
 	\centering
@@ -149,7 +149,7 @@ Otro algoritmo de clasificación no supervisada, TSNE \emph{t-distributed stocha
 	\label{fig:step03tsnecolor-for-each-gas}
 \end{figure}
 
-Si reducimos la dificultad del problema, creando un dataset con las mediciones de un solo sensor, concentraciones por debajo de 100, y utilizando el primer batch, obtenemos los gráficos de las Figuras \ref{}
+Si reducimos la dificultad del problema, creando un dataset con las mediciones de un solo sensor, concentraciones por debajo de 100, y utilizando el primer batch, obtenemos los gráficos de las Figuras \ref{fig:step03kmeans-reduced-color-for-each-gas}
 
 \begin{figure}[h!]
 	\centering
@@ -158,6 +158,8 @@ Si reducimos la dificultad del problema, creando un dataset con las mediciones d
 	\caption[Resultados PCA modelo simplificado]{Resultados PCA para los datos del batch 1, sensor1 y concentraciones por debajo de 100ppmv. Se han coloreado los  puntos según a qué gas pertenece. A la izq se ha reducido la dimensionalidad a 2d, y a la drecha a 3d. Los fases aparecen en clusters bien diferenciados}
 	\label{fig:step03kmeans-reduced-color-for-each-gas}
 \end{figure}
+
+Sin embargo, si creamos un dataset que contenga las mediciones realizadas en el primer batch y en el último, y realizamos sobre éste la misma descomposición con KMeans Clustering, obtenemos la Figura \ref{fig:step03kmeans-1-10-color-for-each-gas}. En esta imagen podemos ver quie existen los mismos puntos que en la imagen anterior, pero que ha aparecido otro gruupo, otra rama, que es completamente diferente. El algoritmo de clustering nos está diciendo que los puntos del último batch no son similares a los del primero. 
 
 \begin{figure}[h!]
 	\centering
